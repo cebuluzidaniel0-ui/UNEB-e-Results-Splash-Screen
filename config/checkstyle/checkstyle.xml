@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!-- Limite la longueur maximale d'une ligne à 100 caractères -->
+    <module name="LineLength">
+        <property name="max" value="100"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- Conventions de nommage -->
+        <module name="TypeName"> <!-- PascalCase pour les classes -->
+            <property name="severity" value="error"/>
+        </module>
+        <module name="MethodName"> <!-- camelCase pour les méthodes -->
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ConstantName"> <!-- UPPER_SNAKE_CASE pour les constantes -->
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Commentaires Javadoc obligatoires pour les classes et méthodes publiques -->
+        <module name="JavadocType">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="JavadocMethod">
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Interdiction des nombres magiques -->
+        <module name="MagicNumber">
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Indentation et espaces autour des opérateurs -->
+        <module name="Indentation"/>
+        <module name="WhitespaceAround"/>
+    </module>
+</module>

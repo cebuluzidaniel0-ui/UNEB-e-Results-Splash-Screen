@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UNEB e-Results</string>
+
+    <!-- Strings for Splash Screen -->
+    <string name="splash_logo_desc">Splash Screen Logo</string>
+    <string name="app_name_splash">UNEB e-Results</string>
+</resources>

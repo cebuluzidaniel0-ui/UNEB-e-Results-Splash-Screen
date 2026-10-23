@@ -4,15 +4,11 @@ plugins {
 
 android {
     namespace = "com.example.unebe_results"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.unebe_results"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -29,9 +25,30 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    // --- DEVOPS ANDROID LINT CONFIGURATION (TASK 2) ---
+    lint {
+        // Stop the build process if any Lint errors are found in the CI pipeline
+        abortOnError = true
+        checkReleaseBuilds = true
+
+        // Enable specific checks to catch Fragment lifecycle and attachment issues
+        enable += listOf(
+            "FragmentNotAttached",
+            "UseRequireInsteadOfGet",
+            "ValidFragment"
+        )
+
+        // Escalate critical Fragment warnings to ERROR level to fail the build on violation
+        error += listOf(
+            "FragmentNotAttached",
+            "UseRequireInsteadOfGet"
+        )
     }
 }
 

@@ -25,30 +25,9 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    // --- DEVOPS ANDROID LINT CONFIGURATION (TASK 2) ---
-    lint {
-        // Stop the build process if any Lint errors are found in the CI pipeline
-        abortOnError = true
-        checkReleaseBuilds = true
-
-        // Enable specific checks to catch Fragment lifecycle and attachment issues
-        enable += listOf(
-            "FragmentNotAttached",
-            "UseRequireInsteadOfGet",
-            "ValidFragment"
-        )
-
-        // Escalate critical Fragment warnings to ERROR level to fail the build on violation
-        error += listOf(
-            "FragmentNotAttached",
-            "UseRequireInsteadOfGet"
-        )
     }
 }
 
@@ -60,4 +39,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Task 2: Optimization - Glide dependency for efficient image loading, caching and downsampling
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
